@@ -30,4 +30,9 @@ class AppTextStyles {
     color: AppColors.grey,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle get montesraatLarge => TextStyle(
+    fontFamily: 'Montseraat',
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w600,
+  );
 }

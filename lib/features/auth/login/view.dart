@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:suits/core/services/helper_methods.dart';
 import 'package:suits/core/utils/text_styles.dart';
 import 'package:suits/core/widgets/app_input/app_input.dart';
 import 'package:suits/core/widgets/custom_app_bar.dart';
 import 'package:suits/features/auth/register/view.dart';
 import 'package:suits/features/auth/widgets/rich_text_section.dart';
+import 'package:suits/features/home/view.dart';
 
+import '../../../core/services/helper_methods.dart';
 import 'widgets/login_with.dart';
 
 class LoginView extends StatefulWidget {
@@ -43,7 +44,12 @@ class _LoginViewState extends State<LoginView> {
               ),
             ),
             SizedBox(height: 20.h),
-            ElevatedButton(onPressed: () {}, child: const Text('Sign In')),
+            ElevatedButton(
+              onPressed: () {
+                navigateTo(HomeView(), isReplacement: true);
+              },
+              child: const Text('Sign In'),
+            ),
             SizedBox(height: 16.h),
             RichTextSection(
               text: 'Don\'t have an account?',

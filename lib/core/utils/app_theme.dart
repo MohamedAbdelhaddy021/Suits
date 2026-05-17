@@ -17,6 +17,7 @@ class AppTheme {
       backgroundColor: const Color(0xffF4F5F7),
       surfaceTintColor: Colors.transparent,
       elevation: 0,
+      scrolledUnderElevation: 0,
       titleTextStyle: AppTextStyles.bodyLarge.copyWith(
         color: AppColors.black,
         fontSize: 20.sp,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:suits/features/home/view.dart';
+import 'package:suits/core/widgets/app_scrolling.dart';
+import 'package:suits/features/views/splash.dart';
 
 import 'core/services/helper_methods.dart';
 import 'core/utils/app_theme.dart';
@@ -24,10 +25,11 @@ class MyApp extends StatelessWidget {
           navigatorKey: navigatorKey,
           debugShowCheckedModeBanner: false,
           theme: AppTheme.appTheme,
+          scrollBehavior: MyScrollBehavior(),
           home: child,
         );
       },
-      child: HomeView(),
+      child: SplashView(),
     );
   }
 }

@@ -61,7 +61,10 @@ void showCustomDialog(
             Text(
               subTitle,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.w500),
+              style: const TextStyle(
+                color: Colors.grey,
+                fontWeight: FontWeight.w500,
+              ),
             ),
             const SizedBox(height: 20),
             SizedBox(

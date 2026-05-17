@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:suits/core/services/helper_methods.dart';
 import 'package:suits/core/utils/app_colors.dart';
 import 'package:suits/core/widgets/app_image.dart';
+import 'package:suits/features/auth/login/view.dart';
 
 class GetStartedView extends StatelessWidget {
   const GetStartedView({super.key});
@@ -104,7 +106,9 @@ class GetStartedView extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(24.w, 61.h, 24.w, 24.h),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  navigateTo(LoginView(), removeHistory: true);
+                },
                 child: Text('Get Started'),
               ),
             ),

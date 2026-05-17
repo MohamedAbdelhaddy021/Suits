@@ -4,14 +4,21 @@ import 'package:suits/core/utils/app_colors.dart';
 import 'package:suits/core/utils/text_styles.dart';
 import 'package:suits/core/widgets/app_grid_view.dart';
 import 'package:suits/core/widgets/app_image.dart';
+import 'package:suits/features/home/widgets/select_category.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int currentCategory = 0;
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.all(16.w),
+      padding: EdgeInsets.symmetric(vertical: 16.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -30,7 +37,7 @@ class HomePage extends StatelessWidget {
           Container(
             color: AppColors.white,
             padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 17.h),
-            margin: EdgeInsets.only(top: 28.h),
+            margin: EdgeInsets.only(top: 28.h, right: 16.w, left: 16.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -74,24 +81,27 @@ class HomePage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 28.h),
-          Row(
-            children: [
-              Text(
-                'Categary',
-                style: AppTextStyles.bodyLarge.copyWith(
-                  fontFamily: 'Montserrat',
-                  fontSize: 20.sp,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: Row(
+              children: [
+                Text(
+                  'Categary',
+                  style: AppTextStyles.bodyLarge.copyWith(
+                    fontFamily: 'Montserrat',
+                    fontSize: 20.sp,
+                  ),
                 ),
-              ),
-              Spacer(),
-              TextButton(onPressed: () {}, child: Text('See All')),
-            ],
+                Spacer(),
+                TextButton(onPressed: () {}, child: Text('See All')),
+              ],
+            ),
           ),
-
           SizedBox(
-            height: 60,
+            height: 60.h,
             child: ListView.builder(
               itemCount: 8,
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Container(
                 width: 50.w,
@@ -104,13 +114,19 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 28.h,),
-          Text('Flash Sale',style: AppTextStyles.bodyLarge.copyWith(
-                  fontFamily: 'Montserrat',
-                  fontSize: 20.sp,
-                ),),
-                SizedBox(height: 16.h,),
-                AppGridView(itemCount: 6),
+          SizedBox(height: 28.h),
+          Padding(
+            padding: EdgeInsets.only(left: 16.w),
+            child: Text(
+              'Flash Sale',
+              style: AppTextStyles.bodyLarge.copyWith(
+                fontFamily: 'Montserrat',
+                fontSize: 20.sp,
+              ),
+            ),
+          ),
+          SelectCategory(),
+          AppGridView(itemCount: 6),
         ],
       ),
     );

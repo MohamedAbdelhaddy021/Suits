@@ -1,8 +1,15 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:suits/core/services/helper_methods.dart';
 import 'package:suits/core/utils/app_colors.dart';
-import 'package:suits/features/home/widgets/home.dart';
+import 'package:suits/core/widgets/custom_app_bar.dart';
+import 'package:suits/features/home/pages/cart.dart';
+import 'package:suits/features/home/pages/home.dart';
+import 'package:suits/features/home/pages/wishlist.dart';
+
+import 'pages/profile.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -13,9 +20,26 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   int currentIndex = 0;
+  final List<Map<String, dynamic>> pages = [
+    {'page': HomePage(), 'title': null},
+    {'page': CartPage(), 'title': null},
+    {'page': WishlistPage(), 'title': 'My Wishlist'},
+    {'page': ProfilePage(), 'title': null},
+  ];
+
   void currentPage(int index) {
     currentIndex = index;
+    if (index == 1) {
+      navigateTo(CartPage());
+      return;
+    }
     setState(() {
+      if (index == 1) {
+        currentIndex = index - 1;
+      } else {
+        currentIndex = index;
+      }
+
       log(currentIndex.toString());
     });
   }
@@ -23,7 +47,18 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: HomePage(),
+      appBar: pages[currentIndex]['title'] == null
+          ? null
+          : CustomAppBar(
+              title: pages[currentIndex]['title'],
+              textStyle: TextStyle(
+                fontSize: 20.sp,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w600,
+                color: AppColors.black,
+              ),
+            ),
+      body: pages[currentIndex]['page'],
       bottomNavigationBar: DefaultBottomNavBar(
         currentIndex: currentIndex,
         onTap: currentPage,

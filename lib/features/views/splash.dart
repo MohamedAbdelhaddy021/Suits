@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:suits/core/utils/app_colors.dart';
+import 'package:suits/features/on_boarding/view.dart';
 
+import '../../core/services/helper_methods.dart';
 import '../../core/widgets/app_image.dart';
 
 class SplashView extends StatefulWidget {
@@ -17,7 +19,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     Timer(Duration(seconds: 3), () {
-      // navigateTo(OnBoarding());
+      navigateTo(OnBoardingView());
     });
     super.initState();
   }
@@ -54,7 +56,7 @@ class _SplashViewState extends State<SplashView> {
                   fontSize: 128.sp,
                   letterSpacing: .5,
                   fontWeight: FontWeight.w400,
-                  fontFamily: "Waterfall",
+                  fontFamily: 'Waterfall',
                   color: AppColors.white,
                 ),
               ),
